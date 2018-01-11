@@ -1,1 +1,86 @@
 /* pages/orderinfo/orderinfo.wxss */
+.orderinfo{
+  width: 100%;
+  padding-top: 0rpx;
+  background-color: #f9f9f9;
+  min-height: 100%;
+  paddingh-bottom: 20rpx;
+}
+.orderinfo .userbox{
+  width: 100%;
+  display: flex;
+  margin: 20rpx auto;
+  padding: 15rpx;
+  background-color: #fff;
+  overflow: hidden;
+  align-items:center;
+}
+.orderinfo .user-icon{
+  margin-right: 10rpx;
+  position: relative;
+  margin: 0 35rpx;
+  display: inline-block;
+  width: 50rpx;
+  height: 45rpx;
+}
+.orderinfo .userinfo{
+  flex: 3;
+  box-sizing: border-box;
+  padding-right: 50rpx;
+}
+.orderinfo .userinfo view{
+  margin: 10rpx 0;
+
+  font-size: 26rpx;
+  color: #666;
+}
+.orderinfo .userinfo .seltxt{
+  color: #fc5879; 
+}
+
+.order-product{
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding:20rpx;
+  border-bottom:1px solid #dfdfdf; 
+}
+.icons-sm{
+  width: 45rpx;
+  height: 37.5rpx;
+  display: inline-block;
+  padding-right: 20rpx;
+}
+.order-product .product-tit{
+  font-size: 32rpx;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+.product-info {
+  display: flex;
+  width: 100%;
+}
+.product-info text{
+   flex: 1;
+   font-size: 30rpx;
+  color: #333;
+}
+.order-item{
+  padding: 20rpx;
+  border-bottom:1px solid #dfdfdf; 
+  background: #fff;
+  box-sizing: border-box;
+  display: flex;
+}
+.order-item .item-tit{
+  flex: 1;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.order-item .item-info{
+  font-size: 28rpx;
+  padding-right: 20rpx;
+}

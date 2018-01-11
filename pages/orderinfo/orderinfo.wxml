@@ -1,5 +1,53 @@
 <!--pages/orderinfo/orderinfo.wxml-->
 <view class='orderinfo'>
-  <view class=''>
+  <view class='userbox'>
+    <image class='user-icon address' src='../../icons/address.png'></image>
+    <view class='userinfo'>
+      <view class='username'>收件人：<text class='seltxt'>呜呜呜</text> </view>
+      <view class='usertel'>电话：15888888888</view>
+      <view class='userads'>
+        <text>地址：</text>
+        <text>上海市 普陀区 金山国际 海市 普陀区 金山国际 海市 普陀区 金山国际 100 栋</text>
+      </view>
+    </view>
+  </view>
+   <view class='userbox'>
+      <image class='user-icon order' src='../../icons/empty-order.png'></image>
+      <view class='userinfo'>
+          <view>
+            <text>订单状态：</text>
+            <text class='seltxt'>代付款</text>
+          </view> 
+          <view>订单号：56765436786455</view>
+          <view>
+            <text>顾客：</text>
+            <text class='seltxt'>嘻哈猴</text>
+          </view>
+          <view>
+            留言信息：亲， 你的东西请尽快邮寄过来哈
+          </view>
+      </view>
+    </view>
+  <view class='order-product'>
+    <view class="product-tit">产品名称</view>
+    <view class='product-info'>
+      <text>数量：22</text>
+      <text>价格：10</text>
+    </view>
+  </view>
+  <view class='order-item'>
+    <text class='item-tit'>已使用优惠券：</text>
+    <view class='item-info'>
+      <image class='icons-sm' src='../../icons/quan.png'></image>
+      <text>5元春节专属优惠券</text>
+    </view>
+  </view>
+  <view class='order-item'>
+    <text class='item-tit'>订单总价</text>
+    <text class='item-info'>￥ 6元</text>
+  </view>
+  <view class='order-item'>
+    <text class='item-tit'>下单时间</text>
+    <text class='item-info'>2018年01月11日</text>
   </view>
 </view>

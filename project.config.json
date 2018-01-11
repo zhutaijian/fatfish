@@ -12,7 +12,7 @@
 	"projectname": "fatFish",
 	"condition": {
 		"weapp": {
-			"current": 4,
+			"current": 11,
 			"list": [
 				{
 					"id": 0,
@@ -79,6 +79,11 @@
 					"name": "限时抢",
 					"pathName": "pages/limittimebuy/limittimebuy",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "订单详情",
+					"pathName": "pages/orderinfo/orderinfo"
 				}
 			]
 		},
