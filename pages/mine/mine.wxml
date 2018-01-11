@@ -62,7 +62,7 @@
           <image class="mine-right-arrow" class='icon' src="../../icons/quan.png"></image>
             <view class="mine-customer-service-title" >我的优惠券</view>
             <view class="mine-spacing"></view>
-             <view class="tel-num">3张</view>
+             <view class="tel-num">{{validCouponCount}}张</view>
             <image class="mine-right-arrow" src="../../icons/right_arrow.png"></image>
         </view>
           <view>

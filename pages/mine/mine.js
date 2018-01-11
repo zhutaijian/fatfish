@@ -1,4 +1,5 @@
 var login = require('../../common/login.js');
+var couponService = require("../minecoupons/minecoupons.service");
 var config = require('../../config/config.js');
 var app = getApp();
 Page({
@@ -56,7 +57,11 @@ Page({
     this.setData({
       userInfo
     })
-    
+    couponService.getMyCoupons().then((res) => {
+      this.setData({
+        validCouponCount: res.coupons.length
+      })
+    })
 
   },
   scanFun(){

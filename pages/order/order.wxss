@@ -22,20 +22,21 @@ page{
   font-size: 28rpx;
 }
 .active_true{
-  color:#ffd600;
+  color:#fc5879;
 }
 .order-types .active{
   position: absolute;
   bottom: 0;
   width:12%;
   height:4rpx;
-  background: #ffd600;
+  background: #fc5879;
   left:4%;
 }
 .order-box{
   height: 100%;
 }
 .order-box .order-list{
+  background-color: #fff;
    overflow-y: auto;
 }
 .order-box .order-item{
@@ -100,13 +101,13 @@ page{
 }
 .no-order-wrapper{
   text-align: center;
-  transform: translate(0,-50%);
-  margin-top: 50%;
+  transform: translate(0,-40%);
+  margin-top: 40%;
 }
 .no-order-wrapper image{
   display: block;
-  width:160rpx;
-  height:160rpx;
+  width:90%;
+  height:690rpx;
   margin: 0 auto;
 }
 .no-order-wrapper  .no-order{

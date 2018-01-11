@@ -102,6 +102,12 @@ Page({
       url: '/pages/orderdetail/orderdetail?order=' + JSON.stringify(item)
     });
   },
+  seeOrderInfo(event){
+    var id = event.currentTarget.id;
+    wx.navigateTo({
+      url: '/pages/orderinfo/orderinfo'
+    });
+  },
   deleteProduct(event){
     debugger;
     var that =this;

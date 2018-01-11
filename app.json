@@ -16,7 +16,8 @@
         "pages/mine/mine",
         "pages/minecoupons/minecoupons",
         "pages/productadd/productadd",
-        "pages/limittimebuy/limittimebuy"
+        "pages/limittimebuy/limittimebuy",
+        "pages/orderinfo/orderinfo"
     ],
     "window": {
       "enablePullDownRefresh":false,

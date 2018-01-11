@@ -1,0 +1,5 @@
+<!--pages/orderinfo/orderinfo.wxml-->
+<view class='orderinfo'>
+  <view class=''>
+  </view>
+</view>
