@@ -1,6 +1,8 @@
 <!--pages/minecoupons/minecoupons.wxml-->
 <import src="../../components/Tips.wxml" />
 <view class='my-coupon-box'>
+  <!-- 没有优惠券 图片 -->
+  <!-- <image wx:if="{{ }}" class='novaucher' src='../../icons/novoucher.png'></image> -->
   <view class='ticket-item {{item.isValid&&amountInfo.totalPrice}}' bindtap='voucherBtn' data-id="{{item._id}}" wx:for="{{coupons}}">
     <view class='check' wx:if="{{amountInfo.totalPrice&&selectedCouponId&&item._id==selectedCouponId}}">
       <image class='check-img' mode='widthFix' src='../../icons/dui.png'></image>

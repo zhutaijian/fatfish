@@ -90,3 +90,7 @@
   width: 35rpx;
   display: inline-block;
 }
+.novaucher{
+  width: 100%;
+  height: 650rpx;
+}
