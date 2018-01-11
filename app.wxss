@@ -5,8 +5,8 @@
 }
 
 .input-number-icon {
-    width: 40rpx;
-    height: 40rpx;
+    width: 35rpx;
+    height: 35rpx;
     background-color: #f6cc32;
     display: flex;
     align-items: center;
