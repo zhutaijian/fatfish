@@ -16,7 +16,10 @@ Page({
   onLoad: function (options) {
     var that = this;
     loader.show(this);
-    that.setData(options)
+    that.setData({
+      totalPrice: Number(options.totalPrice).toFixed(2),
+      amount: Number(options.amount).toFixed(2)
+    })
     utils.getOneCategoryById(that).then(() => loader.hide(that, 1));
   },
 

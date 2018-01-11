@@ -15,7 +15,7 @@ Page({
     isPaying: false,
     productIds: [],
     couponAmount:0,
-    type: "delivery",
+    type: wx.getStorageSync('deliveryType')||'delivery',
     selectedDate: "30分钟可送达",
     deliveryPay: 0,
     array: utils.generateTimeList()
@@ -102,6 +102,10 @@ Page({
       deliveryPay: type == 'delivery' ? 5 : 0,
       type
     })
+      wx.setStorageSync(
+          'deliveryType',
+        type
+        )
 
 
   },
@@ -158,8 +162,10 @@ Page({
         return item;
       }
     });
+    
     this.setData({
       carts,
+      type: wx.getStorageSync('deliveryType') || 'delivery',
       productIds: that.data.productIds,
       totalPrice
     });
@@ -209,16 +215,19 @@ Page({
     that.setData({
       isPaying: true
     });
+  
     var userInfo = app.globalData.userInfo;
-    let totalPrice = that.data.deliveryPay + that.data.totalPrice;
+    let { couponAmount = 0}  = that.data;
+    let totalPrice = that.data.deliveryPay + that.data.totalPrice - couponAmount;
     let deliveryTime = that.data.selectedDate;
-    let { desc, deliveryPay, address } = that.data;
+    let { desc, deliveryPay, address, type} = that.data;
     wx.request({
       url: config.api.createOrder,
       method: "post",
       data: {
         deliveryTime,
         desc,
+        delivery: type =='delivery'?'配送':'自提',
         accountCouponId: app.selectedCouponId,
         address,
         deliveryPay,
@@ -250,14 +259,14 @@ Page({
                 });
               },
               'fail': function (res) {
-                that.setData({
-                  carts: [],
-                  isPaying: false
-                });
-                wx.setStorageSync('carts', "[]");
-                wx.navigateTo({
-                  url: '/pages/order/order'
-                });
+                // that.setData({
+                //   carts: [],
+                //   isPaying: false
+                // });
+                // wx.setStorageSync('carts', "[]");
+                // wx.navigateTo({
+                //   url: '/pages/order/order'
+                // });
               }
             })
         } else {

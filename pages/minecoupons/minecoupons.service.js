@@ -27,7 +27,7 @@ module.exports = {
    getMyCoupons:(params)=>{
       return new Promise((reslove,reject)=>{
         wx.request({
-          url: config.api.getCoupons,
+          url: config.api.getCoupons+'?status=normal',
           method: "get",
           data: { ...params, user: userId},
           complete: function (res) {
