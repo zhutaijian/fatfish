@@ -3,6 +3,7 @@ var utils = require('../../utils/util.js');
 var inputNumber = require('../../components/inputnumber.js');
 var WxParse = require('../../wxParse/wxParse.js');
 var tips = require('../../components/tips.js');
+var productService = require('../../service/product.service.js');
 var carts = wx.getStorageSync('carts') != '' ? JSON.parse(wx.getStorageSync('carts')) : [];
 var obj;
 var deviceInfo = {};
@@ -80,33 +81,32 @@ Page({
         title: '加载中',
       })
       obj = utils.getProductById(options.id)[0];
-      wx.request({
-        url: config.api.reqProductDetail.replace(':id', options.id),
-        success: function (res) {
-          wx.hideLoading();
-          wx.hideNavigationBarLoading();
-          var product = res.data || null;
-          wx.setNavigationBarTitle({
-            title: product.title
-          });
-          product.count = obj ? obj.count : 0;
-          product.thumbnail = utils.getRealImage(product);
-          product.price = product.price.toFixed(2);
-          product.media = product.media || [];
-          product["media"] = product.media.map(function (item) {
-            item.thumbnail = utils.getRealImage({ thumbnail: item });
-            return item.thumbnail;
-          });
-          product.media = product.media.length == 0 ? [product.thumbnail] : product.media;
-          self.setData({
-            product: product
-          });
-          if (product.islimitproduct) {
-            self.getLimitProducCountById(product._id);
-          }
-          self.calTotal();
+      productService.api({ url: "/" + options.id, params: { scancode: options.scancode}})
+        .then((res)=>{
+        wx.hideLoading();
+        wx.hideNavigationBarLoading();
+        var product = res || {};
+        wx.setNavigationBarTitle({
+          title: product.title
+        });
+        product.count = obj ? obj.count : 0;
+        product.thumbnail = utils.getRealImage(product);
+        product.price = product.price.toFixed(2);
+        product.media = product.media || [];
+        product["media"] = product.media.map(function (item) {
+          item.thumbnail = utils.getRealImage({ thumbnail: item });
+          return item.thumbnail;
+        });
+        product.media = product.media.length == 0 ? [product.thumbnail] :      product.media;
+        self.setData({
+          product: product
+        });
+        if (product.islimitproduct) {
+          self.getLimitProducCountById(product._id);
         }
+        self.calTotal();
       });
+      
     });
   },
   confirmOrder(options) {
@@ -136,7 +136,7 @@ Page({
     inputNumber.sub(this, this.data.product.count, 'product');
     var obj = utils.getProductById(this.data.product._id)[0];
     carts[obj.index] = Object.assign({}, obj, { count: this.data.product.count });
-    if (this.data.product.count==0){
+    if (this.data.product.count == 0) {
       carts.splice(obj.index, 1);
     }
     wx.setStorageSync('carts', JSON.stringify(carts));

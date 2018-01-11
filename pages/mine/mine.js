@@ -59,6 +59,19 @@ Page({
     
 
   },
+  scanFun(){
+    wx.scanCode({
+      scanType: ['qrCode'],
+      success:function(text){
+        var thisCode = text.result;
+        wx.navigateTo({
+          url: '/pages/product/product?scancode=' + thisCode,
+        })
+      },
+      fail:function(){
+      }
+    })
+  },
   minecoupons() {
 
     wx.navigateTo({

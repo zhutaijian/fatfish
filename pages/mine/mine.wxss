@@ -16,6 +16,13 @@ page {
     text-align: center;
     border-bottom: 1px #f0f0f0 solid;
 }
+.mine-scan{
+  position: absolute;
+  right: 20rpx;
+  top: 60rpx;
+  width: 55rpx;
+  height: 55rpx;
+}
 
 .mine-user-avatar {
     float: left;
@@ -37,7 +44,7 @@ page {
     font-size: 32rpx;
      margin-top: 65rpx;
     margin-left: 40rpx;
-    color: #fff;
+    color: #333;
   
 }
 

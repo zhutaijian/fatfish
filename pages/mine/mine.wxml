@@ -1,6 +1,7 @@
 <view class="mine-box">
     <scroll-view>
         <view class="mine-user">
+           <image class='mine-scan' bindtap="scanFun" src='../../icons/sys2.png'></image>
             <image class="mine-user-avatar" mode="aspectFill" src="{{userInfo.avatarUrl}}" />
             <view class="mine-user-name">{{userInfo.nickName}}</view>
         </view>
