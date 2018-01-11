@@ -1,0 +1,63 @@
+.coupon{
+  position: fixed;
+  top:40%;
+  left: 50%;
+  margin: 0 auto;
+  z-index: 101;
+  transform: translate(-50%,-50%);
+  animation: couponanim .6s ease;
+
+}
+.coupon-line{
+  position: absolute;
+  left: 50%;
+  bottom: -70rpx;
+  width: 1px;
+  content: '';
+  height: 80rpx;
+  background-color:#ccc; 
+  z-index: 101;
+}
+.coupon-close{
+  position: absolute;
+  bottom:-120rpx;
+  right: 50%;
+  margin-right: -28rpx;
+  width: 20px;
+  height: 20px;
+  z-index: 102;
+  border:1px solid #ccc;
+  border-radius: 50%;
+  text-align: center;
+}
+.coupon-close image{
+  position: relative;
+  display: block;
+  margin: 5rpx auto 0;
+  width: 40rpx;
+  height: 40rpx;
+  z-index: 103;
+}
+.coupon-bg{
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top:0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.6);
+}
+.coupon-img image{
+  width: 350rpx;
+  height:455rpx;
+}
+
+@keyframes couponanim{
+  0%{transform: translate(-50%,-50%) scale(.2) ;opacity: 0; }
+  25%{transform: translate(-50%,-50%) scale(.4) ;opacity: 1;}
+  50%{transform: translate(-50%,-50%) scale(.6);opacity: 1;}
+  75%{transform:translate(-50%,-50%) scale(.8) ;opacity: 1;}
+  100%{transform:translate(-50%,-50%) scale(1) ;opacity: 1;}
+}

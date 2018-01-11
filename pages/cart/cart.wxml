@@ -1,0 +1,81 @@
+<import src="../../components/InputNumber.wxml" />
+<import src="../../components/TwoRowProduct.wxml" />
+<import src="../../components/Tips.wxml" />
+<import src="../../components/Loader.wxml" />
+<template is="tips" data="{{isShow,title}}" />
+<template is="loader" data="{{isShowLoader,positionY}}" />
+<view class="cart-box">
+    <view class="split"></view>
+   
+    <scroll-view scroll-y style="height:{{scrollHeight}}px" class="cart-box-scroll" wx:if="{{carts.length>0}}">
+        <view class="cart-wemall-header">
+            <view class='section-title'>
+                <view class='title-content'>
+                    <view class='before'></view>闪送超市
+                    <view class="after"></view>
+                </view>
+            </view>
+
+
+        </view>
+        <!-- <view class='delivery-time'>
+            <view class='time-label'>收货时间</view>
+            <picker bindchange="bindchange" value="{{selectedDate}}" range="{{array}}">
+                <view class="desc">{{selectedDate}}<text>（可预订）</text></view>
+                <image class="mine-right-arrow" src="../../icons/right_arrow.png" />
+            </picker>
+
+        </view>
+
+        <view class='delivery-desc'>
+            <view class='desc-label'>收货备注</view>
+            <input bindinput="bindinput" maxlength="100" placeholder="可输入100字以内特殊要求内容" />
+        </view> -->
+        <view data-index="{{index}}" bindtouchend='touchend' bindtouchstart='touchstart' class="cart-item {{item.deleteStatus?'delete-status':''}}" wx:for="{{carts}}" wx:key="{{item._id}}">
+            <view class="wemall-checkbox-container" style="margin-top: 30rpx;">
+                <image wx:if="{{item.checked}}" mode="aspectFit" src="{{checkedIcon}}" data-index="{{index}}" data-checked="false" bindtap="checkItem" class="wemall-checkbox"></image>
+                <image wx:else mode="aspectFit" src="{{uncheckIcon}}" class="wemall-checkbox" data-index="{{index}}" data-checked="true" bindtap="checkItem"></image>
+            </view>
+            <view>
+                <image class="product-image" mode="aspectFit" src="{{item.url}}"></image>
+            </view>
+            <view class="product-info">
+                <text class="product-name" data-id="{{item._id}}" bindtap="gotoproduct">{{item.title}}</text>
+                <view class="product-price-box">
+                    <view class="product-price">¥ {{item.price}}</view>
+                    <view class="product-count">
+                        <template is="input-number" data="{{value:item.count,index:index}}" />
+                    </view>
+                </view>
+
+
+            </view>
+            <view class='delete-btn' data-index="{{index}}" bindtap="deleteProduct">删除</view>
+        </view>
+    </scroll-view>
+    <view class="total-pay-box" wx:if="{{carts.length>0}}">
+        <view class="wemall-checkbox-container all-select-checkbox">
+            <image wx:if="{{allChecked}}" mode="aspectFit" src="{{checkedIcon}}" data-checked="false" bindtap="checkAllItem" class="wemall-checkbox"></image>
+            <image wx:else mode="aspectFit" src="{{uncheckIcon}}" data-checked="true" bindtap="checkAllItem" class="wemall-checkbox"></image>
+        </view>
+        <view class="all-select-label">全选</view>
+        <view class="total-money-box">
+            <view class="total-pay">合计: </view>
+            <view>
+                <view class="total-money">¥ {{totalPrice}}</view>
+            </view>
+        </view>
+        <view wx:if="{{isChecked}}" class="cart-submit" bindtap='jiesuan'>结算</view>
+        <view wx:if="{{!isChecked}}" class="cart-submit gray">结算</view>
+    </view>
+   <view  wx:else>
+    <view class='empty-text'>
+      <view class='empty-img-wrapper'>
+        <image src="../../icons/empty-cart.jpg" mode="widthFit"/>
+        </view>
+        <text>购物车还是空的哦～</text>
+        <button class='gotoBuy' bindtap='gotoBuy'>去逛逛</button>
+    </view>
+    <template is="tworowproduct" data="{{toData,noBanner:true}}" />
+  </view>
+</view>

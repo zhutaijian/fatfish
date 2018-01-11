@@ -1,0 +1,64 @@
+<!--pages/confirmorder/confirmorder.wxml-->
+<view class='confirm-order-page'>
+  <!-- <view class='address-box' bindtap="getUserLocation">
+   <view class="address-bg top"></view>
+    <view class='address-label'>收货地址</view>
+    <view class='address-content'>
+    <view>{{address||'暂时没有用户地址，点击获取用户地址'}}</view>
+    <view>{{username}}  {{telNumber}}</view>
+    
+    </view>
+   <image class='address-icon' src="../../icons/right_arrow.png"/>
+ <view class="address-bg bottom"></view>
+     </view> -->
+
+  <scroll-view scroll-y style="height:90%;"  class='order-box'>
+    <view class="section product-section">
+      <view  class="title">商品列表</view>
+      <view class='product-item' wx:for='{{info.productinfo}}' wx:key="{{item._id}}">
+        <view class='product'>
+          <image src="{{item.url}}" class='product-avatar' />
+          <view class='product-info'>
+            <view>
+              <text class='product-title'>{{item.title}}</text>
+
+            </view>
+            <view class='sub-info'>
+              <text class='product-price'>¥{{item.price}}</text>
+              <text class='product-count'>x {{item.count}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="section product-section">
+    <view class="title">费用列表</view>
+    <view class="list">
+      <view class="list-item">
+        <view>商品总额</view>
+        <view>¥{{productPrice}}</view>
+      </view>
+       <view  class="list-item">
+        <view>配送费 <image src="../../icons/wenhao.png" class="wenhao" bindtap="openDesc"></image></view>
+       
+        <view>¥{{info.deliveryPay}}</view>
+        
+      </view>
+      <view  class="list-item">
+        <view>服务费费</view>
+        <view>0</view>
+      </view>
+       <view  class="list-item">
+        <view>优惠券费</view>
+        <view class='youhui'>-¥0</view>
+      </view>
+    </view>
+  </view>
+  </scroll-view>
+  
+
+  <view class='price-box'>
+    <view class='price-desc'>应付金额：<text>¥{{info.totalPrice}}</text></view>
+    <view class='weixin-pay-button' bindtap="continuePay">微信支付</view>
+  </view>
+</view>

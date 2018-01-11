@@ -1,0 +1,60 @@
+<import src="../../components/Loader.wxml" />
+<view class="home-box">
+	<view class="search">
+    <navigator url="/pages/search/search" class="input">
+      <image class="icon"></image>
+      <text class="txt">搜索更多商品</text>
+    </navigator>
+     <button open-type="contact" class='icon-chat' class="mine-customer-service" >
+    <image   src="../../icons/chat.png" class='icon-chat' ></image>
+  </button>
+  </view>
+
+	<view class="home-box-scroll">
+		<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="3" wx:if="{{homeBanners.length>0}}">
+			<block>
+				<swiper-item wx:for="{{homeBanners}}">
+					<image src='{{item.src}}'>
+					</image>
+				</swiper-item>
+			</block>
+		</swiper>
+   
+		<view class='section-box' wx:for="{{homeCategory}}" wx:if="{{item.products.length>0}}">
+			<view class='header' bindtap='onCategoryTap' data-id="{{item._id}}">
+				<text>{{item.title}}</text>
+				<image class="icon-right-arrow" src="../../icons/right_arrow.png"></image>
+			</view>
+			<view class='content'>
+      <image src="{{item.src}}" bindtap='onCategoryTap' data-id="{{item._id}}" mode="aspectFit" class='product-type-banner'/>
+				<view class='products2' scroll-with-animation="true">
+					<view class='product-item2' wx:for-item="$item" wx:for="{{item.products}}" data-id="{{$item._id}}" bindtap="onProductTap">
+						<view class='image-wrapper'>
+							<image class='avatar'  mode="aspectFit" src="{{$item.src}}"></image>
+						</view>
+						<view class='product-info'>
+							<view ><text class='title'>{{$item.title}}</text></view>
+							<view class='price-bar'>	<view class='price'><text class='tag'>¥</text><text class='price-num'>{{$item.price}}</text>
+               </view>
+              <image class="goods-carts"src="../../icons/cart-1.png"></image>               
+              </view>
+                
+						</view>
+					</view>
+			</view>
+		</view>
+	</view>
+  <!-- <view class='coupon-bg'></view>
+  <view class='coupon'>
+    <view class='coupon-line'></view>
+    <view class='coupon-close'>
+      <image src='../../icons/close_48.png'></image>
+    </view>
+    <view class='coupon-img'>
+      <image src='../../icons/5.png'></image>
+    </view>
+  </view> -->
+	<view class='no-product' wx:if="{{!isLoading}}">没有更多商品了</view>
+</view>
+<template is="loader" data="{{isShowLoader,positionY}}" />
+</view>

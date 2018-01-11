@@ -1,0 +1,109 @@
+<!--pages/productadd/productadd.wxml-->
+<page class='product-add'>
+<view wx:if="{{viewType=='success'}}" class='success-pay-box'>
+ <view class='success-pay'>
+   <image src="../../icons/success-pay.png"></image>
+   <text>商品添加成功</text>
+   <view class='pay-btns'>
+   <button bindtap='goToDetail'>查看详情</button>
+   <button bindtap='goToAdd'>继续添加</button>
+   </view>
+   </view>
+
+</view>
+ <scroll-view wx:if="{{viewType=='add'}}" scroll-y style="height:{{windowHeight}}rpx;" class='main'>
+<view class='product-add-avatar-wrapper' wx:if="{{!thumb.src}}">
+<label>商品头像</label>
+<image src='../../icons/camera.png' class='product-add-avatar' bindtap="openThumb">商品头像</image>
+</view>
+<!-- {{urlprefix}}{{thumb.src}} -->
+<view class='view-avatar' wx:if="{{thumb.src}}">
+<image src="{{urlprefix}}/{{thumb.src}}"   mode="aspectFit" class='thumb'/>
+<image class='icon-close' bindtap='deleteThumb' src="../../icons/close_48.png"/></view>
+<view class="section">
+
+<label>商品详情图</label>
+<view class='right-scan'>
+  	<image bindtap='openMedia' class="icon-scan" src="../../icons/camera.png"></image></view>
+   
+</view>
+<view class='section medias'>
+ <view class='media-item'  wx:for="{{media}}">
+ <image class='icon-close' data-index="{{index}}" bindtap='deleteOneMedia' src="../../icons/close_48.png"/>
+ 	<image  mode="aspectFit"   src="{{urlprefix}}/{{item.src}}"/>
+   </view>
+</view>
+<view class="section m-t-10">
+  <label>商品名称</label>
+  <input data-name="title" bindinput="bindinput"  placeholder-style="color:#bbb" placeholder="商品名称"  type="text" />
+</view>
+
+<view class="section">
+<label>商品条形码</label>
+<view class='right-scan'>
+    {{scanCode}}
+  	<image bindtap='openScan' class="icon-scan" src="../../icons/scan.png"></image></view>
+</view>
+
+<view class="section">
+<label>商品分类</label>
+<picker bindchange="bindchange" data-name="selectType" range-key="title" value="{{selectType}}" range="{{categories}}">
+    <view class="picker">
+      {{categories[selectType].title||"选择分类"}}
+      	<image class="icon-right-arrow" src="../../icons/right_arrow.png"></image>
+    </view>
+  </picker>
+</view>
+
+<view class="section">
+  <label>零售价</label>
+   <input type="digit"  data-name="price" bindinput="bindinput"  placeholder-style="color:#bbb" placeholder="零售价"/>
+</view>
+<view class="section">
+  <label>商品重量</label>
+    <input type="digit"  data-name="weight" bindinput="bindinput"  placeholder-style="color:#bbb" placeholder="商品重量"/>
+</view>
+<view class="section">
+  <label>基本单位</label>
+  <picker bindchange="bindchange" data-name="selectUnit" range-key="value" value="{{selectUnit}}" range="{{weightUnits}}">
+    <view class="picker">
+      {{weightUnits[selectUnit].value||"选择单位"}}
+      	<image class="icon-right-arrow" src="../../icons/right_arrow.png"></image>
+    </view>
+  </picker>
+</view>
+
+<view class="section m-t-10">
+  <label>库存</label>
+  <input value="{{stock}}" data-name="stock" bindinput="bindinput"   placeholder-style="color:#bbb" placeholder="库存" />
+</view>
+<view class="section">
+  <label>商品状态</label>
+  <picker bindchange="bindchange" data-name="selectProductStatus" range-key="value" value="{{selectProductStatus}}" range="{{productStatus}}">
+    <view class="picker">
+      {{productStatus[selectProductStatus].value||"商品状态"}}
+      	<image class="icon-right-arrow" src="../../icons/right_arrow.png"></image>
+    </view>
+  </picker>
+</view>
+<view class="section">
+  <label>品牌</label>
+  <input data-name="brand" bindinput="bindinput" value="{{brand}}"  placeholder-style="color:#bbb" placeholder="品牌" />
+</view>
+<view class="section">
+  <label>保质期(月)</label>
+  <input data-name="expireTime" bindinput="bindinput" value="{{expireTime}}"  placeholder-style="color:#bbb" placeholder="保质期" />
+</view>
+<view class='section'>
+<label>商品描述</label>
+  <textarea value="{{desc}}" data-name="desc" bindblur="bindinput" auto-height placeholder="商品描述" />
+</view>
+</scroll-view>
+<view class='bar-box' wx:if="{{viewType=='add'}}">
+    <view class='item'>取消</view>
+    <view class='item' bindtap="submitProduct">保存商品</view>
+</view>
+<!-- <button bindtap="openScan">商品详情</button> -->
+<!-- <button class='save-product' bindtap="submitProduct">保存商品</button> -->
+<!-- <button bindtap="saveProduct">继续添加</button> -->
+</page>

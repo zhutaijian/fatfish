@@ -1,0 +1,3 @@
+<template name="tips">
+  <view class='tips' wx:if="{{isShow}}">{{title}}</view>
+</template>

@@ -1,0 +1,31 @@
+<!--pages/addresslist/addresslist.wxml-->
+<view class='address-list-box'>
+  <view class='main'>
+     <view class="address-list" wx:if="{{addressList.length>0}}">
+         <view animation="{{animationData}}"  data-id="{{item._id}}"  data-index="{{index}}" bindtouchend='touchend' bindtouchstart='touchstart'  class="address-item {{item.deleteStatus?'delete-status':''}}" wx:for="{{addressList}}">
+            <view class='address-info'>
+               <text class='tag' wx:if="{{item.tag}}">{{item.tag}}</text> <view class='address-title'>{{item.address}}</view>
+            </view>
+             <view class='user-info'>
+                 <text class='name'>{{item.username}}</text>
+                  <text>{{item.telephone}}</text>
+             </view>
+             <image data-index="{{index}}" src='../../icons/edit.png' data-id="{{item._id}}"  bindtap="editAddress"/>
+            <view class='delete-btn' data-id="{{item._id}}" data-index="{{index}}" bindtap="deleteAddress">删除</view>
+         </view>
+      </view>
+      <view wx:if="{{firstLoad&&addressList.length==0}}" class='no-address-box'>
+           <view>
+                  <image src="../../icons/deliver.png"></image>
+                  <view class='lg'>没有收货地址</view>
+                  <text class='small'>点击下方新增按钮</text>
+            </view>
+       </view>
+   </view>
+   <view class='add-adress'>
+     <view class='add-address-btn' bindtap="addAddress">
+         <image src="../../icons/add-1.png"></image>
+         <text>新增地址</text>
+     </view>
+   </view>
+</view>

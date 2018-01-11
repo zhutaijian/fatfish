@@ -1,0 +1,59 @@
+<!--pages/categoryproducts/categoryproducts.wxml-->
+<import src="../../components/InputNumber.wxml" />
+<import src="../../components/Tips.wxml" />
+<import src="../../components/Loader.wxml" />
+<template is="loader" data="{{isShowLoader,positionY}}" />
+<view class='category-product-list-box'>
+<!-- <text class='animate-text' style="transform:translate3d({{2*x}}rpx,{{2*y}}rpx,0rpx)">1</text> -->
+ <text class='animate-text' animation="{{animationData}}" wx:if="{{i>0}}"></text> 
+ <view class="search">
+    <navigator url="/pages/search/search" class="input">
+      <image class="icon"></image>
+      <text class="txt">搜索更多商品</text>
+    </navigator>
+  </view>
+    <view class="category-products">
+        <view class="category-list">
+            <view data-id="{{item._id}}" bindtap="selectCategory" data-index="{{index}}" class='category-item active_{{_index==index}}' wx:for="{{categories}}">
+                {{item.title}}
+            </view>
+        </view>
+        <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:100%;" class="products">
+            <view style='position:relative' data-index="{{index}}" class='product-item' wx:for="{{selectProducts}}">
+               
+                <image binderror="binderror"  data-id="{{item._id}}" bindtap="onProductTap"  src="{{item.src}}" class="prodcut-avatar"></image>
+                <view class="product-info">
+                    <view class="product-title"  data-id="{{item._id}}" bindtap="onProductTap"> {{item.title}}</view>
+                    <view class='product-desc'>
+                      <view class='product-tag ' wx:if="{{item.islimitproduct}}">特价</view><view class='product-tag ' wx:if="{{item.islimitproduct && item.limit}}">限购{{item.limit}}份</view>
+                        <view class='product-tag feature' wx:for-item="$item" wx:for="{{item.tags}}">{{$item}}</view>
+                    </view>
+                    <view class="product-price"> 
+                    <view class='product-sm'>¥</view>
+                    {{item.price}}
+                    
+                        <view class="product-count" wx:if="{{!item.islimitproduct}}">
+                          
+                            <template is="input-number" data="{{value:item.count||0,index:index}}" />
+                        </view>
+                       
+                    </view>
+                </view>
+            </view>
+            
+        </scroll-view>
+    </view>
+    <view class='bottom-bar'>
+    <view class="cart-box  {{i>4?'active':''}}"  bindtap='goToCart'>
+      <image  src="../../icons/cart.png"></image>
+      <text>{{totalCount}}</text>
+    </view>
+    
+    <!--  -->
+    <view class='product-count'>
+      <view class='text'>总计：<text>{{totalPrice}}</text>元 </view>
+      <view bindtap='goToCart' class='product-btn'>去结算</view>
+    </view>
+     <template is="tips" data="{{isShow,title}}" />
+  </view>
+</view>

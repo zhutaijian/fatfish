@@ -1,0 +1,163 @@
+/* pages/order/order.wxss */
+page{
+  background-color:#f9f9f9;
+  height: 100%;
+}
+.split{
+  padding-top: 20rpx;
+}
+.order-types{
+  display: flex;
+  background: #fff;
+  width:100%;
+  font-size: 30rpx;
+  position: relative;
+  height: 100rpx;
+}
+.order-type{
+  flex:1;
+  padding: 35rpx 0;
+  text-align: center;
+  color:#666;
+  font-size: 28rpx;
+}
+.active_true{
+  color:#ffd600;
+}
+.order-types .active{
+  position: absolute;
+  bottom: 0;
+  width:12%;
+  height:4rpx;
+  background: #ffd600;
+  left:4%;
+}
+.order-box{
+  height: 100%;
+}
+.order-box .order-list{
+   overflow-y: auto;
+}
+.order-box .order-item{
+ margin-bottom: 20rpx;
+  border-bottom: 1rpx solid #ddd;
+  background: #fff;
+}
+.order-item .order{
+ 
+}
+.order-item .product-list{
+
+}
+.order-item .product{
+  display: flex;
+  margin:10rpx  20rpx;
+
+ 
+}
+.order-item .product-avatar {
+ 
+}
+.order-item .product-avatar image{
+   width:130rpx;
+   height:130rpx;
+  
+}
+.order-item .product-info{
+      padding-left: 20rpx;
+   flex:1;
+   padding: 0rpx 20rpx;
+   box-sizing: border-box;
+}
+.order-item .product-info .title{
+  color:#666;
+   font-size: 26rpx;
+}
+.order-item  .product-info .price{
+  color:#f13030;
+  font-size: 28rpx;
+
+}
+.order-item  .product-info .count{
+   font-size: 28rpx;
+  float: right;
+  color:#666;
+  padding-right: 10rpx;
+}
+.order-item  .detail-info{
+  margin-top: 20rpx;
+}
+.order-item  .summary-info{
+ display: flex;
+  padding: 20rpx;
+  font-size: 28rpx;
+  text-align: right;
+  letter-spacing: 2rpx;
+  position: relative;
+}
+.order-item .totalprice{
+  color:#f13030;
+}
+.no-order-wrapper{
+  text-align: center;
+  transform: translate(0,-50%);
+  margin-top: 50%;
+}
+.no-order-wrapper image{
+  display: block;
+  width:160rpx;
+  height:160rpx;
+  margin: 0 auto;
+}
+.no-order-wrapper  .no-order{
+  display: block;
+  color:#bbb;
+  text-align: center;
+  margin-top: 30rpx;
+  font-size: 32rpx;
+  letter-spacing: 2rpx;
+}
+.head-info{
+  padding: 20rpx;
+  display: flex;
+}
+.pay-status{
+  font-size: 28rpx;
+  text-align: right;
+ flex:1;
+}
+.pay-status.waitPay{
+  color:#f13030;
+}
+.pay-status.wellDone{
+  color:#4CAF50;
+}
+.pay-date{
+ font-size:28rpx;
+}
+.confirm-shuohuo{
+   font-size: 24rpx;
+   line-height: 42rpx;
+   margin-right: 40rpx;
+   display: inline-block;
+   border: 1rpx solid #333;
+   padding: 0 10rpx;
+   border-radius:8rpx; 
+   color:#333;
+   position: absolute;
+   right:0;
+   top:20rpx;
+}
+.delete-shuohuo{
+   font-size: 24rpx;
+   line-height: 42rpx;
+   margin-right: 40rpx;
+   display: inline-block;
+   border: 1rpx solid #f13030;
+   padding: 0 10rpx;
+   border-radius:8rpx; 
+   color:#f13030;
+   position: absolute;
+   right:140rpx;
+   top:20rpx;
+}

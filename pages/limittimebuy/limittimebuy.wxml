@@ -1,0 +1,57 @@
+<!--pages/limittimebuy/limittimebuy.wxml-->
+<view>
+
+<view class='loading' wx:if="{{!isLoaded}}">
+加载中...
+</view>
+<view class='limit-time-page' wx:if="{{isLoaded}}">
+    <view class='modal-mask'></view>
+    <view class='limit-time-header'>
+     <image src="https://www.woaifruit.com/media/201710/59f35a754f7ce56ac6197096/599b095eef1a1.jpg" mode="aspectFit" class='limit-buy-banner'/>
+          <view class='section-header'>
+             <view bindtap='setActiveTab' data-id="{{item._id}}" class='section-item {{activeTab==item._id}}' wx:for="{{sectionParts}}">
+                  <text>{{item.title}}</text> 
+                 <text class='small-desc'>{{item.isbegin?(item.isbegin!='finish'?'抢购中':'已结束'):"即将开始"}}</text>
+             </view>
+         </view> 
+         <view class='header'>
+           距本场<text wx:if="{{begin}}">结束</text>
+           <text wx:if="{{!begin}}">开始</text>
+            <view class='delay-time'>
+             <text>{{delayHour}}</text>时
+             <text>{{delayMin}}</text>分
+             <text>{{delaySecond}}</text>秒
+            </view>
+         </view> 
+    </view>
+    <view class='products'>
+         <view class='product' wx:for="{{info.products}}">
+              <image mode="{{scaleToFill}}" src="{{item.src}}"></image>
+              <view class='right-info'>
+                  <view class='title'>
+                    {{item.title}}
+                  </view>
+                  <view class='price'>
+                      <text class='price-desc'>抢购价</text><i>¥</i>{{item.price}}
+                     <text class='price-desc'></text> <text class='price-desc'>原价</text><span class='old-price'><i>¥</i>{{item.price*1.2}}</span>
+                  </view>
+                  <view class='sell-count'>
+                     <view class='delay-count' >已售
+                     {{item.sellPercent}}</view>
+                   <view class='progress-bar'>
+                      <view class='progress-value'  style="width:{{item.sellPercent}};" ></view>
+                   </view>
+                  </view>
+                  <view class='product-bottom'>
+                    <view class='right-buy' wx:if="{{begin&&begin=='finish'}}">已经结束</view>
+                  <view class='right-buy' data-id="{{item._id}}" bindtap='pay' wx:if="{{begin&&begin!='finish'&&item.number>0}}">立即抢购</view>
+                   <view class='right-buy' wx:if="{{!begin}}">稍候抢购</view>
+                    <view class='right-buy' wx:if="{{item.number==0}}">已售罄</view> 
+                    <view class='limit-count' wx:if="{{item.islimitproduct}}">每人限购{{item.limit}}份</view>
+                  </view>
+                
+              </view>
+         </view>
+    </view>
+</view>
+</view>

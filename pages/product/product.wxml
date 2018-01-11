@@ -1,0 +1,88 @@
+<!--商品详情页-->
+<import src="../../components/InputNumber.wxml" />
+<import src="../../components/Tips.wxml" />
+<scroll-view scroll-y class="product-container {{buyPopupVisible?'modal-open':''}}">
+  <button class="share-view" open-type="share">
+    <image class="share" src="../../icons/share.png"></image>
+  </button>
+  <view class="product-box-scroll" lower-threshold="{{0}}">
+    <swiper indicator-dots="{{true}}" style="height: {{swiperHeight}};" autoplay="{{true}}" interval="{{5000}}" duration="{{800}}">
+      <block wx:for="{{product.media}}" wx:key="{{item.key}}">
+        <swiper-item class="product-swiper">
+          <image class="product-swiper-image" mode="aspectFit" src="{{item}}" />
+        </swiper-item>
+      </block>
+
+    </swiper>
+    <view>
+      <view class="product-name-box">
+        <view class="product-name">{{product.title}}
+        </view>
+      </view>
+      <view class='product-desc'>
+        <text wx:if="{{product.desc!='false'}}">{{product.desc}}</text>
+      </view>
+      <view class="product-price-box">
+        <text class="product-price-y">¥ </text>
+        <text class="product-price">{{price ? price : product.price}} </text>
+      </view>
+
+      <view class="delivery-stock-box">
+        
+        <view class="stock">
+          <text><text wx:if="{{product.islimitproduct}}">每人限购 {{product.limit}}</text>    剩余: {{product.number-product.count}}</text>
+        </view>
+      </view>
+    
+      <view class=' delivery-stock-box tags'>
+<view style="flex: 1;text-align:center">
+          <view wx:for="{{product.tags}}" class='tag'>
+            {{item}}
+          </view>
+
+        </view>
+      </view>
+
+    </view>
+    <view class="product-content-box">
+      <view class="product-detail-title">
+        <view class='section floor_title '>
+          <view class="title_bg" style="">
+            <image src='https://www.woaifruit.com/media/201708/59a81ef7e290715bd2ec3518/blob'></image>商品详情
+          </view>
+        </view>
+      </view>
+      <view class='details'>
+        <view class='detail-info'>
+          <text class='label'>品牌：</text>
+          <text>{{product.brand}}</text>
+        </view>
+        <view class='detail-info'>
+          <text class='label'>产品规格：</text>
+          <text>{{product.weight}} {{product.weightUnit}}</text>
+        </view>
+        <view class='detail-info'>
+          <text class='label'>保质期：</text>
+          <text>{{product.expireTime}}个月</text>
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+  <view class='bottom-bar'>
+    <view class='cart-box' bindtap='onCartTap'>
+      <image src="../../icons/cart.png"></image>
+      <text>{{product.count}}</text>
+    </view>
+    <!--  -->
+    <view class='product-price'>
+      <text class="product-price-y">¥ </text><text class='price'>{{totalPrice}}</text>
+    </view>
+    <view class="product-count">
+      <text class='product-tit'>添加商品：</text>
+      <template is="input-number" data="{{value:product.count}}" />
+    </view>
+  </view>
+<template is="tips" data="{{isShow,title}}" />
+</scroll-view>

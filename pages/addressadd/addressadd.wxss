@@ -1,0 +1,73 @@
+/* pages/addressadd/addressadd.wxss */
+page{
+  height:100%;
+  background: #f5f5f5;
+}
+.add-address-box{
+  padding:20rpx;
+  background: #fff;
+  margin-top: 20rpx;
+}
+.form-control{
+  display: flex;
+  background: #fff;
+  height:80rpx;
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #eee;
+  align-items: center;
+
+}
+.form-control .label{
+  width:150rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+.form-control input {
+  flex:1;
+}
+.form-control .right-arrow{
+  width:30rpx!important;
+  height:30rpx!important;
+  background-size:contain; 
+  padding:10rpx;
+}
+.submit-btn{
+  width:90%;
+  margin: 0 auto;
+  display: block;
+  border: 0!important;
+  color:#333;
+  background: #ffd600;
+  margin-top: 40rpx;
+}
+button::after{
+    border: 0!important;
+}
+.tags{
+  display: flex;
+  width:100%;
+  align-items: center;
+  
+}
+.tag{
+  border: 1rpx solid #26a2ff;
+  background: #fff;
+  height: 50rpx;
+  width:70rpx;
+  margin-right: 20rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border-radius:10rpx; 
+  color:#26a2ff;
+  font-size: 28rpx;
+}
+.selected-true{
+  color:#fff!important;
+  background: #26a2ff!important;
+}
+.wemall-checkbox {
+  width: 48rpx;
+  height: 48rpx;
+  padding:5px;
+  margin-top: -5px;
+}

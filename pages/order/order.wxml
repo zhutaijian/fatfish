@@ -1,0 +1,16 @@
+<!--pages/order/order.wxml-->
+<import src="../../components/OrderList.wxml" />
+<view class='order-box'>
+   <view class='order-types '>
+      <view class='order-type "active_{{_index==index}}"' wx:for="{{orderTypes}}" data-index="{{index}}"  data-id="{{item.id}}"   bindtap="changeOrderTyepe">{{item.text}}</view>
+      <view class='active' animation="{{animationData}}" style="transform:translate3d({{defaultType}}%, 0px, 0px)"></view>
+   </view>
+   
+     <scroll-view scroll-y style="height:93%;"  class='order-list split'>
+          <template is="order-list" wx:if="{{_index==0||!_index}}" data="{{orders:orders,meteadata:ss,firstLoad:firstLoad['orders']}}"/>
+          <template is="order-list" wx:if="{{_index==1}}"  data="{{orders:waitPay,meteadata:ss,firstLoad:firstLoad['waitPay']}}"/>
+          <template is="order-list"  wx:if="{{_index==2}}" data="{{orders:waitDelivery,meteadata:ss,firstLoad:firstLoad['waitDelivery']}}"/>
+          <template is="order-list" wx:if="{{_index==3}}"  data="{{orders:waitReceive,meteadata:ss,firstLoad:firstLoad['waitReceive']}}"/>
+          <template is="order-list" wx:if="{{_index==4}}"  data="{{orders:wellDone,meteadata:ss,firstLoad:firstLoad['wellDone']}}"/>
+    </scroll-view>
+</view>

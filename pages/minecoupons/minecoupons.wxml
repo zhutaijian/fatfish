@@ -1,0 +1,20 @@
+<!--pages/minecoupons/minecoupons.wxml-->
+<import src="../../components/Tips.wxml" />
+<view class='my-coupon-box'>
+  <view class='ticket-item {{item.isValid&&amountInfo.totalPrice}}' bindtap='voucherBtn' data-id="{{item._id}}" wx:for="{{coupons}}">
+    <view class='check' wx:if="{{amountInfo.totalPrice&&selectedCouponId&&item._id==selectedCouponId}}">
+      <image class='check-img' mode='widthFix' src='../../icons/dui.png'></image>
+    </view>
+    <view class='ticket-amount'>
+      <text class='amount'>{{item.coupon.amount}}</text>
+      <text class='full'>满{{item.coupon.usedLimit}}可用</text>
+      <text class='ticket-type'>{{item.tag}}</text>
+    </view>
+    <view class='ticket-info'>
+      <view class='ticket-title'>{{item.coupon.title}}</view>
+      <text class='ticket-time'>{{item.expireTime[0]}}-{{item.expireTime[1]}}</text>
+      <view class='des'>{{item.coupon.description}}</view>
+    </view>
+  </view>
+  <template is="tips" data="{{isShow,title}}" />
+</view>

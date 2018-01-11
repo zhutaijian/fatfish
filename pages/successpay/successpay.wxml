@@ -1,0 +1,19 @@
+<!--pages/successpay/successpay.wxml-->
+<import src="../../components/Loader.wxml" />
+<import src="../../components/TwoRowProduct.wxml" />
+<template is="loader" data="{{isShowLoader,positionY}}" />
+
+<page class='success-pay-box'>
+   <view class='success-pay'>
+    <image class='success-img' src='../../icons/success.jpg'></image>
+    <view class='success-txt'>实际支付(元)</view>
+    <text class='success-amount'>{{totalPrice}}</text>
+    <text class='jianmian-amount' wx:if="{{amount>0}}">已优惠：{{amount}}元</text>
+   <!-- <image src="../../icons/success-pay.png"></image> -->
+   <view class='pay-btns'>
+   <view class='button' bindtap='goToOrder'>查看详情</view>
+   <!-- <button bindtap='goToBuy'>继续购买</button> -->
+   </view>
+   </view>
+    <template is="tworowproduct" data="{{toData,noBanner:true}}" />
+</page>

@@ -1,0 +1,92 @@
+/* pages/minecoupons/minecoupons.wxss */
+.ticket-item.false{
+ opacity: .7;
+  filter: grayscale(1);
+}
+.ticket-item{
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  width: 90%;
+  padding:10rpx 20rpx 50rpx;
+  margin: 30rpx auto 50rpx;
+  border-radius: 10rpx;
+  box-shadow: 1px 2px 5px #dfdfdf,1px 2px 5px #dfdfdf;
+ 
+}
+.ticket-amount{
+  flex: 1;
+  margin-top: 20rpx;
+  padding-right: 20rpx;
+  text-align: center;
+}
+.ticket-amount text{
+  display: block;
+}
+.ticket-amount .amount{
+  position: relative;
+  display: inline-block;
+  font-size: 50rpx;
+  font-weight: 600;
+  color:#fd5400;
+}
+.ticket-amount .amount::after{
+  position: absolute;
+  right:-30rpx;
+  bottom: 10rpx;
+  content: '元';
+  color:#fd5400;
+  font-size: 22rpx;
+}
+.full,.ticket-type,.des,.ticket-time{
+  font-size: 24rpx;
+  color:#999;
+}
+.ticket-type{
+  color:#fd5400;
+}
+.ticket-info{
+  flex: 2;
+  margin-top: 20rpx;
+}
+.ticket-title{
+  font-size: 38rpx;
+}
+.ticket-time{
+  margin-top: 10rpx;
+  display: block;
+  color: #666;
+}
+.des{
+  margin-top: 10rpx;
+  color: #666;
+}
+
+.check{
+  position: absolute;
+  width: 60rpx;
+  height: 20px;
+  top: 0;
+  right: 0;
+  text-align: center;
+  border-radius: 10rpx 0 0 0;
+  z-index: 1;
+}
+.check::after{
+  position: absolute;
+  width: 0rpx;
+  height: 0px;
+  top: 0;
+  right: 0;
+  content: '';
+  border-top: 65rpx solid red;
+  border-left: 65rpx solid transparent; 
+  z-index: -1;
+}
+.check .check-img{
+  position: relative;
+  top:-4rpx;
+  right:-8rpx;
+  width: 35rpx;
+  display: inline-block;
+}

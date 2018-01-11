@@ -1,0 +1,6 @@
+<template name='loader'>
+  <view  class="loading_container" wx:if="{{isShowLoader}}">
+     <view  class="load_img" style="background-position-y:{{positionY}}rem"></view>
+     <image src="../../icons/play.svg" class='load_ellipse'></image>
+  </view>
+</template>

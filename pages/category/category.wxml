@@ -1,0 +1,19 @@
+<!--pages/category/category.wxml-->
+<view>
+ <view class="search">
+    <navigator url="/pages/search/search" class="input">
+      <image class="icon" ></image>
+      <text class="txt">寻找称心商品</text>
+    </navigator>
+    
+  </view>
+  <view>
+    <image class='banner-img' mode='widthFix' src='../../icons/banner-1.jpeg'></image>
+  </view>
+  <view class='categories'>
+        <view class='category-item' data-id="{{item.id}}" bindtap='gotoCategoryProduct' wx:for="{{categories}}">
+            <image class="catergory-avatar" src='{{"../../icons/icon-list"+index+".png"}}'></image>
+            <text class='category-text'>{{item.text}}</text>
+        </view>
+    </view>
+</view>

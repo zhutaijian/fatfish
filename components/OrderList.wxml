@@ -1,0 +1,40 @@
+<template name="order-list">
+  <view class='no-order-wrapper' wx:if='{{orders.length==0&&firstLoad}}'>
+    <image src="../../icons/empty-order.png" />
+    <view class='no-order'>暂无订单！</view>
+  </view>
+  <view class='order-item' wx:key="{{index}}" wx:for="{{orders}}">
+    <view class='order'>
+      <view class='head-info'>
+        <text class='pay-date'>下单时间:{{item.date}}</text>
+        <text class='pay-status {{item.status}}'>{{meteadata[item.status]}}</text>
+      </view>
+      <view class='product-list'>
+        <view class='product' wx:for-item="$item" wx:for="{{ item.productinfo}}">
+          <view class='product-avatar'>
+            <image src="{{$item.url}}" />
+          </view>
+          <view class='product-info'>
+            <view class='title'>
+              {{$item.title}}
+            </view>
+            <view class='detail-info'>
+              <text class='price'>¥{{$item.price}}</text>
+              <text class='count'>X{{$item.count}}</text>
+            </view>
+
+          </view>
+        </view>
+      </view>
+      <view class='summary-info'>
+        <button id="{{item._id}}" bindtap='confirmShouhuo' class='confirm-shuohuo' wx:if="{{item.status=='waitReceive'}}">确认收货</button>
+        共计
+        <text>{{item.products.length}}</text>种商品，一共
+        <text class='totalprice'>{{item.totalPrice}}</text>元
+
+          <view id="{{item._id}}" data-index="{{index}}" bindtap='deleteProduct' class='delete-shuohuo' wx:if="{{item.status=='waitPay'}}">删除订单</view>
+         <view id="{{item._id}}" bindtap='continuePay' class='confirm-shuohuo' wx:if="{{item.status=='waitPay'}}">重新结算</view>
+      </view>
+    </view>
+  </view>
+</template>

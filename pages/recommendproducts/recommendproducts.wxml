@@ -1,0 +1,5 @@
+<!--pages/recommendproducts/recommendproducts.wxml-->
+<import src="../../components/TwoRowProduct.wxml" />
+<page class='recommend-products-page'>
+   <template is="tworowproduct" data="{{toData}}" />
+</page>

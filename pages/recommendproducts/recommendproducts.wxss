@@ -1,0 +1,2 @@
+/* pages/recommendproducts/recommendproducts.wxss */
+@import '../../components/twoRowProduct.wxss';

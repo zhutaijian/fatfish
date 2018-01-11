@@ -1,0 +1,54 @@
+/* pages/successpay/successpay.wxss */
+@import '../../components/twoRowProduct.wxss';
+page{
+background: #f6f6f6;
+}
+
+.success-pay{
+ text-align: center;
+ color:#ffd600;
+ padding: 40rpx 0 20rpx;
+ background: #fff;
+}
+.success-pay image{
+   width:120rpx;
+   height:120rpx;
+   display: block;
+   margin: 0 auto;
+   margin-bottom: 20rpx;
+}
+.success-txt{
+  font-weight: 300;
+  color:#333;
+}
+.success-amount{
+  position: relative;
+  font-size: 70rpx;
+  font-weight: 600;
+  color:#333;
+}
+.success-img{
+  position: absolute;
+  right: 0;
+  top:0;
+}
+.success-pay .pay-btns{
+   width:28%;
+   margin-left: 10%;
+   margin: 30rpx auto 10rpx;
+}
+.jianmian-amount{
+  display: block;
+  font-size: 26rpx;
+  color:#ff3800;
+}
+
+.success-pay .pay-btns .button{
+  background: #fff;
+  color:#333;
+  border-radius: 12px;
+  font-size: 32rpx;
+  border: 1rpx solid #999;
+  height:60rpx;
+  line-height: 60rpx;
+}

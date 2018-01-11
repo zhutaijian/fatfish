@@ -1,0 +1,35 @@
+<!--pages/addressadd/addressadd.wxml-->
+
+<view class='add-address-box'>
+  <view class="add-address-form">
+    <view class="form-control">
+      <text class="label">姓名</text>
+      <input focus="true" data-name="username" placeholder="姓名"  bindinput="bindinput" value="{{formInfo.username}}"/>
+      <image  mode="aspectFit" src="../../icons/{{['check.png','uncheck.png'][formInfo.gender]}}" data-index="{{0}}" data-checked="false" bindtap="checkItem" class="wemall-checkbox"></image>
+      <text data-index="{{0}}" data-checked="false" bindtap="checkItem">先生</text>
+                <image mode="aspectFit"src="../../icons/{{['uncheck.png','check.png'][formInfo.gender]}}"  class="wemall-checkbox"  data-index="{{1}}" data-checked="true" bindtap="checkItem"></image>
+                    <text data-index="{{1}}" data-checked="false" bindtap="checkItem" >女士</text>
+    </view>
+    <view class="form-control">
+      <text class="label">电话</text>
+      <input data-name="telephone"   placeholder="手机号码"  bindinput="bindinput" value="{{formInfo.telephone}}" type="number" />
+    </view>
+    <view class="form-control">
+      <text class="label">地址</text>
+      <input data-name="address" placeholder="地址"   bindinput="bindinput"  value="{{formInfo.address}}" type="text" />
+      <image bindtap="addMapAddress" class='right-arrow' src="../../icons/right_arrow.png" />
+    </view>
+    <view class="form-control">
+      <text class="label">门牌号</text>
+      <input data-name="menPaiHao" placeholder="例如5号楼403室"   bindinput="bindinput"  value="{{formInfo.menPaiHao}}"/>
+    </view>
+    <view class="form-control">
+      <text class="label">标签</text>
+      <view class='tags'>
+         <view class='tag' class="'tag  selected-{{formInfo.tag==item}}'" wx:for="{{tags}}" data-name="{{item}}" bindtap="selectTag">{{item}}</view>
+      </view>
+    </view>
+
+  </view>
+</view>
+<button class='submit-btn' bindtap="submitAddress">提交地址</button>

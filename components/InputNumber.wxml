@@ -1,0 +1,12 @@
+<template name="input-number">
+    <view class="input-number">
+        <view class="input-number-icon sub-wrapper" wx:if="{{value>0}}" data-index="{{index}}" catchtap="sub">
+            <image class="input-number-icon-img sub" mode="aspectFit" src="../../icons/sub.png" />
+        </view>
+        <text class="input-number-input " type="number" wx:if="{{value>0}}" value="">{{value}}</text>
+        <view class="input-number-icon add-wrapper" data-index="{{index}}" catchtap="add">
+          
+            <image class="input-number-icon-img add" mode="aspectFit" src="../../icons/add.png" />
+        </view>
+    </view>
+</template>

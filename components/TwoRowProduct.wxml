@@ -1,0 +1,27 @@
+<template name="tworowproduct">
+  <view class='recommend-products-box'>
+    <image wx:if="{{!noBanner}}" src="{{toData.src}}" mode="aspectFit" class='product-type-banner' />
+    <view class='section floor_title '>
+      <view class="title_bg" style="">
+        <image src='https://www.woaifruit.com/media/201708/59a81ef7e290715bd2ec3518/blob'></image>{{toData.title}}
+      </view>
+    </view>
+    <view class='section product-list-style'>
+      <view bindtap='onProductTap' data-id="{{item._id}}" wx:for="{{toData.products}}" class='product-item-style1'>
+        <view class='img-wrapper'>
+          <image mode="aspectFit" src="{{item.src}}"></image>
+          <view class='goods-info'>
+            <view class='title'>{{item.title}}</view>
+            <view class='price'>
+              <view><text>¥</text>{{item.price}}</view>
+               <image class="goods-carts" src="../../icons/cart-1.png"></image>
+            </view>
+          </view>
+
+        </view>
+
+      </view>
+      <view class='no-product'>没有更多商品了</view>
+    </view>
+  </view>
+</template>

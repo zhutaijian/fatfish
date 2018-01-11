@@ -1,0 +1,87 @@
+<!--pages/confirmorder/confirmorder.wxml-->
+<view class='confirm-order-page'>
+  <scroll-view scroll-y style="height:90%;"  class='order-box'>
+    <view class='radio-wbox'>
+      <view class='radio-box' data-type='delivery' bindtap="selectItem">
+        <image src='../../icons/sel-{{type=="delivery"?2:1}}.png'></image>
+        <text>胖鱼外卖</text>
+      </view>
+      <view class='radio-box' data-type='shop' bindtap="selectItem">
+        <image src='../../icons/sel-{{type=="shop"?2:1}}.png'></image>
+        <text>到店自提</text>
+      </view>
+    </view>
+    <view class='address-box' wx:if="{{carts.length>0}}" bindtap="getUserLocation">
+        <view class="address-bg top"></view>
+        <view class='address-label'>{{type=='delivery'?'收货地址':"提货地址"}}</view>
+        <view class='address-content'>
+        
+           <view wx:if="{{address}}">{{type=='delivery'?address:"太仓市朝阳东路5号亿立城市广场126室"}}</view>
+            <view class='no-address' wx:if='{{!address}}'>{{address||'暂时没有用户地址，点击获取用户地址'}}</view>
+            <view wx:if="{{username&&type=='delivery'}}">{{username}} {{telNumber}}</view>
+
+        </view>
+        <image class='address-icon' src="../../icons/right_arrow.png" />
+        <view class="address-bg bottom"></view>
+    </view>
+      <view class='delivery-time'>
+            <view class='time-label'>{{type=='delivery'?'收货时间':'到店时间'}}</view>
+            <picker bindchange="bindchange" value="{{selectedDate}}" range="{{array}}">
+                <view class="desc">{{selectedDate}}<text>（可预订）</text></view>
+                <image class="mine-right-arrow" src="../../icons/right_arrow.png" />
+            </picker>
+
+        </view>
+
+        <view class='delivery-desc'>
+            <view class='desc-label'>收货备注</view>
+            <input bindinput="bindinput" maxlength="100" placeholder="可输入100字以内特殊要求内容" />
+        </view>
+    <view class="section product-section">
+      <view  class="title">商品列表</view>
+      <view class='product-item' wx:for='{{carts}}' wx:key="{{item._id}}">
+        <view class='product'>
+          <image src="{{item.url}}" class='product-avatar' />
+          <view class='product-info'>
+            <view>
+              <text class='product-title'>{{item.title}}</text>
+
+            </view>
+            <view class='sub-info'>
+              <text class='product-price'>¥{{item.price}}</text>
+              <text class='product-count'>x {{item.count}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="section product-section">
+    <view class="title">费用列表</view>
+    <view class="list">
+      <view class="list-item">
+        <view>商品总额</view>
+        <view>¥{{totalPrice}}</view>
+      </view>
+       <view  class="list-item">
+        <view>配送费 <image src="../../icons/wenhao.png" class="wenhao" bindtap="openDesc"></image></view>
+       
+        <view>¥{{deliveryPay}}</view>
+        
+      </view>
+       <view bindtap='openCoupon' class="list-item"  wx:if="{{validCouponCount>0}}">
+        <view>优惠券</view>
+        <view class='youhui' wx:if="{{couponAmount>0}}">-¥{{couponAmount}}</view>
+        <view class='youhui' wx:if="{{couponAmount==0&&validCouponCount>0}}">您有{{validCouponCount}}张优惠券</view>
+        <image  class="mine-right-arrow" src="../../icons/right_arrow.png" />
+      </view>
+      
+    </view>
+  </view>
+  </scroll-view>
+  
+
+  <view class='price-box'>
+    <view class='price-desc'>应付金额：<text class='price-tag'>¥</text><text>{{totalPrice+deliveryPay-couponAmount}}</text></view>
+    <view class='weixin-pay-button' bindtap="pay">微信支付</view>
+  </view>
+</view>
